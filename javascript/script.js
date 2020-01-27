@@ -14,7 +14,7 @@ function renB(){
     for (var i = 0; i < planes.length; i++){
         var pB = $("<button>");
         pB.addClass("plane");
-        pB.attr("data-plane",planes[i]);
+        pB.attr("data-name",planes[i]);
         pB.text(planes[i]);
         $("#button-view").append(pB)
 
@@ -34,9 +34,10 @@ $("#addPlane").on("click", function(event){
 
 })
 //call giphy for gifs on button click and append to 
-$("#button-view").on("click", function() {
+$("body").on("click", function() {
 
-    var plane = $(this).attr("button.data-plane");
+    var plane = $(this).attr("data-name");
+    console.log(plane)
 
     var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + plane + "&api_key=eOM4nHx6sSiT0ZOcb2ef3EpD6Ck10PmQ"
     console.log(queryUrl)
