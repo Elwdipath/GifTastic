@@ -14,7 +14,7 @@ function renB(){
     for (var i = 0; i < planes.length; i++){
         var pB = $("<button>");
         pB.addClass("plane");
-        pB.attr("data-plane",planes[i]);
+        pB.attr("data-name",planes[i]);
         pB.text(planes[i]);
         $("#button-view").append(pB)
 
