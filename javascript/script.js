@@ -35,10 +35,9 @@ $("#addPlane").on("click", function(event){
 })
 //call giphy for gifs on button click and append to 
 $("#button-view").on("click", function() {
-
-    var plane = $(this).attr("button.data-plane");
-
-    var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + plane + "&api_key=eOM4nHx6sSiT0ZOcb2ef3EpD6Ck10PmQ"
+    $("#images").empty();
+    var plane = $(this).attr("data-plane");
+    var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + plane + "&api_key=eOM4nHx6sSiT0ZOcb2ef3EpD6Ck10PmQ&limit=10"
     console.log(queryUrl)
     $.ajax({
         url: queryUrl,
@@ -46,8 +45,21 @@ $("#button-view").on("click", function() {
     }).then(function(response){
         var results = response.data
         console.log(results)
+        for (var i = 0; i < results.length; i++){
+            var planeDiv = $("<div>")
+            var p = $("<p>").text("Rating: " + results[i].rating);
+            var planeImg = $("<img>")
+            planeImg.attr("src", results[i].images.fixed_height_still.url);
+            planeDiv.append(p);
+            planeDiv.append(planeImg);
+            $("#images").prepend(planeDiv)
+        }
     })
 })
+
+//document on click "this" to grab the data-plane and send the animate url from giphy
+
+
 
 
 renB()

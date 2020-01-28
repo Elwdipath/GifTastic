@@ -6,35 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
 </head>
 <body>
     <div class="container">
-        <!-- Row to dynamically append images -->
-        <div class="row">   
-            <div id="images"></div>
-        </div>
-
-        <div class="col-md">
-                <form id="aviation">
-                    <label for="plane-input">The need for speed</label>
-                    <input type="text" id="plane-input">
-                    <input id="addPlane" type="submit" value="Add a Plane!">
-                    <br>
-            </div>
-        <!-- Row for images and form -->
+        
         <div class="row">
             <!-- Dynamically append buttons here -->
             <div class="col-md-8">
                 <div id="button-view"></div>
-                
             </div>
-            <!-- Create forms here -->
-            
         </div>
+        <div class="col-md">
+            <form id="aviation">
+                <label for="plane-input">The need for speed</label>
+                <input type="text" id="plane-input">
+                <input id="addPlane" type="submit" value="Add a Plane!">
+                <br>
+            </form>
+        </div>
+        <!-- Row to dynamically append images -->
+        <div class="row">
+            <div id="images"></div>
+        </div> 
     </div>
-    <!-- jquery -->
-    
+    <!-- jquery/js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./javascript/script.js"></script>
 </body>
 </html>
