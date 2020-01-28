@@ -4,6 +4,9 @@
 //Create an array of planes to use as first buttons rendered on the page
 let planes = ["F/18", "Boeing 737","A-10 Warthog", "Cessna 172"]
 
+let pStill;
+let pAnimate;
+let results = [""]
 //Giphy endpoint with search and api key
 // var queryUrl = "https://api.giphy.com/v1/gifs/search?api_key=eOM4nHx6sSiT0ZOcb2ef3EpD6Ck10PmQ"
 
@@ -44,19 +47,42 @@ $(document.body).on("click", ".plane",function() {
         url: queryUrl,
         method: "GET"
     }).then(function(response){
-        var results = response.data
+        results = response.data
         console.log(results)
         for (var i = 0; i < results.length; i++){
             var planeDiv = $("<div>")
             var p = $("<p>").text("Rating: " + results[i].rating);
             var planeImg = $("<img>")
             planeImg.attr("src", results[i].images.fixed_height_still.url);
+            planeImg.attr("data-state", "still")
+            planeImg.attr("data-still", results[i].images.fixed_height_still.url)
+            planeImg.attr("data-animate", results[i].images.fixed_height.url)
+            planeImg.addClass("gif")
             planeDiv.append(p);
             planeDiv.append(planeImg);
             $("#images").prepend(planeDiv)
         }
+        $(".gif").on("click",function(){
+            var state = $(this).attr("data-state");
+            if (state === "still"){
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("src", $(this).attr("animate"));
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
+        })
     })
 })
+
+// $(document.body).on("click", "#images", function () {
+//     var state = $(this).attr("data-state");
+//     if (state === "still"){
+        
+
+//     }
+
+// })
 
 //document on click "this" to grab the data-plane and send the animate url from giphy
 
