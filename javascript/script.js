@@ -2,7 +2,7 @@
 
 //use ajax to make giphy api calls
 //Create an array of planes to use as first buttons rendered on the page
-let planes = ["FA/18", "Boeing 737","A-10 Warthog", "Cessna 172"]
+let planes = ["F/18", "Boeing 737","A-10 Warthog", "Cessna 172"]
 
 //Giphy endpoint with search and api key
 // var queryUrl = "https://api.giphy.com/v1/gifs/search?api_key=eOM4nHx6sSiT0ZOcb2ef3EpD6Ck10PmQ"
@@ -22,7 +22,7 @@ function renB(){
 }
 
 //Add on click function to add to plane array
-$("#addPlane").on("click", function(event){
+$("#addPlane").on("click",function(event){
     event.preventDefault();
 
     var aP = $("#plane-input").val().trim()
@@ -34,11 +34,12 @@ $("#addPlane").on("click", function(event){
 
 })
 //call giphy for gifs on button click and append to 
-$("#button-view").on("click", function() {
+$(document.body).on("click", ".plane",function() {
     $("#images").empty();
-    var plane = $(this).attr("data-plane");
+    var plane = $(this).attr("data-name");
     var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + plane + "&api_key=eOM4nHx6sSiT0ZOcb2ef3EpD6Ck10PmQ&limit=10"
     console.log(queryUrl)
+    console.log(plane)
     $.ajax({
         url: queryUrl,
         method: "GET"
